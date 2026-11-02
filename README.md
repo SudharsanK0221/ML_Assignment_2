@@ -1,7 +1,7 @@
 # Online Shoppers Buying Prediction
 
 **Machine Learning - Assignment 2 | M.Tech (AIML), BITS Pilani WILP**
-Name: YOUR NAME HERE | BITS ID: YOUR BITS ID HERE
+Name: SUDHARSAN K | BITS ID: 2026ak05405
 
 ---
 
@@ -51,7 +51,7 @@ This project builds **5 classification models** that look at the details of one 
 ## c. GitHub repository link
 
 **GitHub:** https://github.com/SudharsanK0221/ML_Assignment_2
-**Live Streamlit app:** https://YOUR-APP-NAME.streamlit.app
+**Live Streamlit app:** https://mlassignment2-tn526quxcx3tb4yimvfpsx.streamlit.app/
 
 ```
 project-folder/
@@ -121,3 +121,8 @@ Settings used: Logistic Regression (max_iter = 1000), Decision Tree (max_depth =
 ## BITS Virtual Lab
 
 The notebook was run on the BITS Virtual Lab. The screenshot is attached in the submitted PDF.
+
+
+## Links
+**GitHub:** https://github.com/SudharsanK0221/ML_Assignment_2
+**Live Streamlit app:** https://mlassignment2-tn526quxcx3tb4yimvfpsx.streamlit.app/
