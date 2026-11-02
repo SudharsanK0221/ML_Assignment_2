@@ -50,7 +50,7 @@ This project builds **5 classification models** that look at the details of one 
 
 ## c. GitHub repository link
 
-**GitHub:** https://github.com/YOUR-USERNAME/YOUR-REPO-NAME
+**GitHub:** https://github.com/SudharsanK0221/ML_Assignment_2
 **Live Streamlit app:** https://YOUR-APP-NAME.streamlit.app
 
 ```
