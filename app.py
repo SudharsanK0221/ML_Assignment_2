@@ -22,9 +22,7 @@ from sklearn.metrics import (accuracy_score, roc_auc_score, precision_score,
                              recall_score, f1_score, matthews_corrcoef,
                              confusion_matrix, classification_report, roc_curve)
 
-# ----------------------------------------------------------------------------
 # Page settings
-# ----------------------------------------------------------------------------
 st.set_page_config(page_title="Shopper Buying Predictor", page_icon="🛒",
                    layout="wide", initial_sidebar_state="expanded")
 
@@ -32,9 +30,7 @@ sns.set_theme(style="whitegrid", palette="deep")
 plt.rcParams["figure.facecolor"] = "white"
 plt.rcParams["axes.titleweight"] = "bold"
 
-# ----------------------------------------------------------------------------
 # A little bit of custom CSS for a cleaner, more professional look
-# ----------------------------------------------------------------------------
 CUSTOM_CSS = """
 <style>
     #MainMenu, footer {visibility: hidden;}
@@ -84,9 +80,7 @@ CUSTOM_CSS = """
 """
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
-# ----------------------------------------------------------------------------
 # Fixed facts about our dataset and saved models
-# ----------------------------------------------------------------------------
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_FILES = {
@@ -112,9 +106,7 @@ SAMPLE_FILE = os.path.join(HERE, "test_data.csv")
 CLASS_NAMES = ["No buy (0)", "Buy (1)"]
 
 
-# ----------------------------------------------------------------------------
 # Small helper functions
-# ----------------------------------------------------------------------------
 @st.cache_resource
 def load_saved_model(model_name):
     """Load one saved model from the model/ folder (done only once per model)."""
@@ -170,9 +162,7 @@ def run_model(model_name, clues, answers):
     return guessed_answers, guessed_chances, scores
 
 
-# ----------------------------------------------------------------------------
 # Top of the page
-# ----------------------------------------------------------------------------
 st.markdown(
     """
     <div class="hero">
@@ -187,9 +177,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ----------------------------------------------------------------------------
 # Sidebar: upload file + choose model
-# ----------------------------------------------------------------------------
 with st.sidebar:
     st.markdown("### 🛒 Shopper Predictor")
     st.caption("ML Assignment 2 · BITS Pilani WILP")
@@ -211,9 +199,7 @@ with st.sidebar:
     with st.expander("Required columns"):
         st.caption(", ".join(CLUE_COLUMNS + [ANSWER_COLUMN]))
 
-# ----------------------------------------------------------------------------
 # Read the data (uploaded file first, then the sample file)
-# ----------------------------------------------------------------------------
 if uploaded_file is not None:
     raw_table = pd.read_csv(uploaded_file)
     data_source_text = f"Uploaded file: {getattr(uploaded_file, 'name', 'test data')}"
@@ -238,9 +224,7 @@ if missing_model_files:
 st.success(f"✅ {data_source_text}  |  {clues.shape[0]} rows, {clues.shape[1]} clue columns")
 buy_percent = answers.mean() * 100
 
-# ----------------------------------------------------------------------------
 # Results
-# ----------------------------------------------------------------------------
 tab_overview, tab_eda, tab_one_model, tab_all_models = st.tabs(
     ["🏠 Overview", "📊 Data Analysis", "🤖 Model Evaluation", "🏆 Compare All Models"]
 )
