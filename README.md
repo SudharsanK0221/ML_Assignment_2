@@ -106,6 +106,19 @@ Settings used: Logistic Regression (max_iter = 1000), Decision Tree (max_depth =
 | Support Vector Machine | Second best overall. Accuracy 89.4%, AUC 0.88, precision 0.74 and MCC 0.55. It balances precision and recall better than Logistic Regression and KNN, but it still misses half of the buyers (recall 0.50). It also took the longest to train, and the Decision Tree still beat it on every important score. |
 | **Overall, Winner for your dataset?** | **Decision Tree.** It has the best Accuracy, AUC, F1 and MCC. MCC is the most reliable score for this imbalanced data (only ~15% buyers), and the Decision Tree is also the fastest to train and the easiest to explain. SVM is the runner-up. |
 
+## Streamlit App Features Implemented
+As per the assignment requirements, the deployed Streamlit application includes:
+- **Dataset upload option:** Users can upload the `test_data.csv` to evaluate models without retraining.
+<img width="275" height="270" alt="image" src="https://github.com/user-attachments/assets/ef20ca42-9f1e-4ab1-9ce9-a930201b5552" />
+
+- **Model selection dropdown:** Users can switch between Logistic Regression, Decision Tree, KNN, Naive Bayes, and SVM.
+<img width="317" height="314" alt="image" src="https://github.com/user-attachments/assets/639a14db-1dd0-4c1b-9786-9acedf132330" />
+
+- **Display of evaluation metrics:** The app dynamically calculates and displays Accuracy, AUC, Precision, Recall, F1, and MCC on the uploaded test data.
+<img width="1883" height="403" alt="image" src="https://github.com/user-attachments/assets/f8561fa1-3864-4aea-949f-ba79c4fa14e0" />
+
+- **Visualizations:** The app outputs the Confusion Matrix and a detailed Classification Report for the selected model.
+   
 **Note on imbalanced data:** since only about 15% of visits end in a purchase, a model that always says "no buy" would already get about 84% accuracy. That is why Precision, Recall, F1 and MCC are looked at together with Accuracy.
 
 ---
