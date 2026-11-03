@@ -125,4 +125,5 @@ Settings used: Logistic Regression (max_iter = 1000), Decision Tree (max_depth =
 
 ## Links
 **GitHub:** https://github.com/SudharsanK0221/ML_Assignment_2
+
 **Live Streamlit app:** https://mlassignment2-tn526quxcx3tb4yimvfpsx.streamlit.app/
