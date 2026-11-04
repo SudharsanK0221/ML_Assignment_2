@@ -144,7 +144,7 @@ To re-create the models, open `shopper_buying_prediction.ipynb` and run all cell
 
 All 5 models were trained on the **same training data** and scored on the **same test data** (2,441 rows).
 
-### Comparison table
+### Model Comparison table
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---|---|---|---|---|---|
@@ -155,6 +155,29 @@ All 5 models were trained on the **same training data** and scored on the **same
 | Support Vector Machine | 0.8943 | 0.8799 | 0.7403 | 0.5000 | 0.5969 | 0.5524 |
 
 Settings used: Logistic Regression (max_iter = 1000), Decision Tree (max_depth = 6), KNN (k = 7), Gaussian Naive Bayes (default), SVM (RBF kernel, probability = True). Precision, Recall and F1 are for the "buyer" class (Revenue = 1).
+
+### Confusion matrix of each model (test data)
+
+Test data = 2,441 visits: 382 real buyers and 2,059 real non-buyers. TN = correct "no buy", FP = false alarm, FN = missed buyer, TP = correct "buy".
+
+| ML Model Name | TN | FP | FN | TP | Buyers found |
+|---|---|---|---|---|---|
+| Logistic Regression | 2012 | 47 | 223 | 159 | 159 of 382 (41.6%) |
+| Decision Tree | 1959 | 100 | 149 | 233 | 233 of 382 (61.0%) |
+| KNN | 1995 | 64 | 229 | 153 | 153 of 382 (40.1%) |
+| Naive Bayes | 1425 | 634 | 72 | 310 | 310 of 382 (81.2%) |
+| Support Vector Machine | 1992 | 67 | 191 | 191 | 191 of 382 (50.0%) |
+
+### What each metric tells us on this dataset
+
+| Metric | What it shows here | Best model | Weakest model |
+|---|---|---|---|
+| Accuracy | Share of all 2,441 guesses that were right. Always saying "no buy" already gives 84.4%, so a model must beat this to be useful. Only Naive Bayes fails (71.1%). | Decision Tree (0.8980) | Naive Bayes (0.7108) |
+| AUC | Chance that a real buyer gets a higher buy-score than a real non-buyer. Does not depend on the cut-off. | Decision Tree (0.9122) | KNN (0.8208) |
+| Precision | Of the visits flagged "will buy", how many really bought. Low precision means wasted offers. | Logistic Regression (0.7718) | Naive Bayes (0.3284) |
+| Recall | Of the 382 real buyers, how many were found. Low recall means lost sales. | Naive Bayes (0.8115) | KNN (0.4005) |
+| F1 | Balance of Precision and Recall in one number. Punishes a model that is good at only one of them. | Decision Tree (0.6517) | Naive Bayes (0.4676) |
+| MCC | Uses all four boxes of the confusion matrix. The fairest single score for imbalanced data (1 = perfect, 0 = guessing). | Decision Tree (0.5942) | Naive Bayes (0.3757) |
 
 ### Observations about each model
 
