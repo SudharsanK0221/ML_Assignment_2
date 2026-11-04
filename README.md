@@ -109,6 +109,12 @@ Repeated rows were removed. True/False columns were changed to 1/0. Number colum
 
 **Live Streamlit app:** https://mlassignment2-tn526quxcx3tb4yimvfpsx.streamlit.app/
 
+<img width="900" height="466" alt="image" src="https://github.com/user-attachments/assets/53649fe9-c484-4d6c-9069-20a6c3f5df78" />
+
+<img width="900" height="484" alt="image" src="https://github.com/user-attachments/assets/4ef65a97-55eb-4ba5-aee3-781d915d43f2" />
+
+<img width="900" height="440" alt="image" src="https://github.com/user-attachments/assets/e53e1fbd-6f1c-4ac2-8d9d-0d0db98e986b" />
+
 ```
 project-folder/
 │-- app.py                                  (Streamlit app)
