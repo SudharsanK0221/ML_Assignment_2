@@ -44,7 +44,62 @@ This project builds **5 classification models** that look at the details of one 
 | Weekend | Whether the visit was on a weekend |
 | Revenue | **Answer column**: did the visit end in a purchase |
 
-**Data preparation:** repeated rows removed, True/False columns changed to 1/0, number columns scaled (StandardScaler), word columns (`Month`, `VisitorType`) changed to 0/1 columns (One-Hot). The data was split 80% training / 20% test (random_state = 42, stratified). All steps are saved inside each model's pipeline, so the app does the same cleaning automatically.
+## b. Dataset description
+
+**Dataset name:** Online Shoppers Purchasing Intention Dataset
+**Source:** UCI Machine Learning Repository (public dataset)
+**Problem type:** Binary classification (Buy / Not buy)
+
+### What the dataset contains
+
+Each row is one visit (session) to an online shopping website. It records what the visitor did during the visit, such as which pages they viewed, how long they stayed, and when and how they arrived. The last column, `Revenue`, says whether the visit ended in a purchase. The data covers about one year of visits, from February to December.
+
+| Item | Detail |
+|---|---|
+| Original rows | 12,330 visits |
+| Rows used | 12,205 (125 repeated rows removed) |
+| Features (clues) | 17 (10 numeric, 7 category-type) |
+| Target column | `Revenue` (1 = bought, 0 = did not buy) |
+| Missing values | None |
+| Class balance | 15.6% buyers, 84.4% non-buyers (imbalanced) |
+
+### Feature groups
+
+| Group | Columns | Meaning |
+|---|---|---|
+| Page visits and time | `Administrative`, `Informational`, `ProductRelated` and their `_Duration` columns | Number of pages seen in each page type and the time spent on them |
+| Website quality signals | `BounceRates`, `ExitRates`, `PageValues` | Share of visitors who leave after one page, how often a page is the last one seen, and the average value of pages seen before a purchase |
+| Calendar | `Month`, `SpecialDay`, `Weekend` | Month of the visit, closeness to a special day such as Valentine's Day, and whether it was a weekend |
+| Visitor details | `VisitorType`, `OperatingSystems`, `Browser`, `Region`, `TrafficType` | New or returning visitor, and codes for system, browser, region and traffic source |
+
+### Why this dataset was chosen
+
+- It meets the assignment limits: at least 12 features (it has 17) and at least 500 rows (it has 12,205).
+- It is a real-world business problem from e-commerce.
+- It mixes numeric and category columns, so it needs proper preprocessing (scaling and one-hot coding).
+- It is imbalanced, so Accuracy alone is misleading, which makes the six metrics (Precision, Recall, F1 and MCC as well as Accuracy and AUC) meaningful.
+- It is large enough that all five models (Logistic Regression, Decision Tree, KNN, Naive Bayes and SVM) can be compared fairly.
+
+### Problem being solved
+
+Most visitors to an online shop leave without buying. If the business can predict **while the visit is happening, or soon after, whether a visitor is likely to buy**, it can:
+
+- show discounts or offers to visitors who are on the fence
+- spend less advertising money on visitors unlikely to buy
+- find out which behaviours (for example, high `PageValues` or low `ExitRates`) lead to a sale
+
+The task is: given the details of a visit, predict `Revenue` (buy or not buy), then compare five models and pick the best one.
+
+### What the exploration found
+
+- Only 15.6% of visits end in a purchase, so a model that always says "no buy" would already be about 84% accurate. This is why MCC and F1 are used to judge the models.
+- 77.6% of visits have `PageValues` = 0, and only 3.9% of those buy. When `PageValues` is above 0, 56.3% buy. It is the strongest clue.
+- November has the highest buying rate (about 25%).
+- New visitors buy more often (about 25%) than returning visitors (about 14%).
+
+### Data preparation
+
+Repeated rows were removed. True/False columns were changed to 1/0. Number columns were scaled with StandardScaler. `Month` and `VisitorType` were converted to 0/1 columns with One-Hot encoding. The data was split 80% training (9,764 rows) and 20% test (2,441 rows, saved as `test_data.csv`) with a fixed random state and the same buyer ratio in both parts.
 
 ---
 
