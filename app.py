@@ -65,8 +65,8 @@ CUSTOM_CSS = """
         color: white !important;
     }
     div[data-testid="stMetric"] {
-        background: #f8f9fc;
-        border: 1px solid #e3e7f0;
+        background: #5880BB;
+        border: 1px solid #5880BB;
         border-radius: 12px;
         padding: 10px 14px 4px 14px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.04);
