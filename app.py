@@ -423,7 +423,7 @@ with tab_all_models:
     comparison_table.index.name = "ML Model Name"
 
     best_model_name = comparison_table["MCC"].idxmax()
-    styled_table = comparison_table.style.highlight_max(axis=0, color="#d7e8fb")
+    styled_table = comparison_table.style.highlight_max(axis=0, color="#2E7EDA")
     st.dataframe(styled_table, width="stretch")
     st.success(f"🏆 Best model on this data (highest MCC): **{best_model_name}**")
 
