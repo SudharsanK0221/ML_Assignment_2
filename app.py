@@ -437,6 +437,3 @@ with tab_all_models:
     plt.tight_layout()
     st.pyplot(figure)
     plt.close(figure)
-
-st.divider()
-st.caption("Built with Streamlit. Models were trained earlier in the notebook. This app only loads saved models and scores the uploaded data - it never re-trains.")
